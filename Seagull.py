@@ -7,6 +7,7 @@ import asyncio
 TOKEN = 'NTI0MDY2MjQ5Mzk1OTI5MTAz.Dviq5A.2sixszdetiEQW56lf4AvS2HxTEs'
 
 bot = commands.Bot(command_prefix = '-') 
+status = ['test3', 'test1', '.test']
 
 @bot.event
 async def on_ready():
@@ -25,5 +26,6 @@ async def ban(ctx, member: discord.Member):
     
 
 
-
+    
+bot.loop.create_task(change_status())
 bot.run(TOKEN)    
