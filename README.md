@@ -1,0 +1,2 @@
+# Seagull
+Best bot lol
