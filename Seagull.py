@@ -6,9 +6,8 @@ from discord.ext.commands import Bot
 import asyncio
 from itertools import cycle
 
-
 bot = commands.Bot(command_prefix='-')
-status = ['test1', 'test2', 'test3']
+status = ['Online in 1 server']
 
 @bot.event
 async def change_status():
@@ -98,17 +97,13 @@ async def suggest(ctx, *suggestion):
     await bot.add_reaction(message, "?")
     await bot.add_reaction(message, "?")
 
-@bot.event
-async def on_member_join(member):
-    channel = bot.get_channel("491569080826855434")
-    await bot.send_message(channel, "Welcome")
 
 @bot.event
-async def on_message(message):
-    if "discord.gg" in message.content.lower():
-        await bot.delete_message(message)
-        await bot.say('Do not advertise, {0}'.format(member.mention))
-    await bot.process_commands(message)    
+async def on_member_join(member):
+    server = member.server
+    fmt = 'Welcome {0.mention} to {1.name}!'
+    await bot.send_message(server, fmt.format(member, server))
+
     
 bot.loop.create_task(change_status())
 bot.run("NTI0MDY2MjQ5Mzk1OTI5MTAz.Dviq5A.2sixszdetiEQW56lf4AvS2HxTEs")
