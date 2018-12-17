@@ -7,7 +7,7 @@ import asyncio
 from itertools import cycle
 
 
-bot = commands.Bot(command_prefix=';')
+bot = commands.Bot(command_prefix='-')
 status = ['test1', 'test2', 'test3']
 
 @bot.event
